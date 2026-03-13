@@ -56,4 +56,14 @@ button {
     box-shadow: 0 10px 0 rgba(0, 0, 0, 0.42);
 }
 
-.title {}
+.title {
+    font-size : 6rem;
+    color:#ffd700;
+    text-shadow: 4px 4px #ff6b6b;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.subtitle{
+    
+}
