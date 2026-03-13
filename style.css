@@ -108,4 +108,24 @@ button:hover {
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.key
+.key{
+    display: inline-block;
+    border: 2px solid #fff;
+    padding: 0 6px;
+    margin: 0 2px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#score-display {
+    position:absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+}
+
+.hidden {
+    display: none !important;
+}
