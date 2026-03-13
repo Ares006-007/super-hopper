@@ -65,5 +65,47 @@ button {
 }
 
 .subtitle{
-    
+    font: size 2.5rem;
+    color: #FFF;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
 }
+
+button {
+    background: #fff;
+    color: #222;
+    border: none;
+    padding: 1rem, 2rem;
+    font-size: 2.5rem;
+    font-family: var(--pixel-font);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 0px 6px 0 #999;
+}
+
+button:active {
+    transform: translateY(6px);
+    box-shadow: 0 0  0 #999;
+}
+
+button:hover {
+    background: #f0f0f0;
+}
+
+#instructions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135px,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05));
+    padding: 1rem;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: right;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.key
