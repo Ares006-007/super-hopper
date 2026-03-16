@@ -99,8 +99,69 @@ function init () {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     document.getElementById("game-container").appendChild(renderer.domElement);
 
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
 
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(10, 20, 10);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.width = 1024;
+    dirLight.shadow.mapSize.height = 1024;
+    scene.add(dirLight);
 
+    renderer.render(scene, camera);
+
+    window.addEventListener("resize", onWindowsResize, false);
+
+    document.addEventListener("keydown", handleInput);
+
+    document.getElementById("start-btn").addEventListener("click", startGame);
+    document.getElementById("restart-btn").addEventListener("click", startGame);
 
 }
- 
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function randomTheme(){
+    return THEMES[Math.floor(Math.random() * THEMES.length)];
+}
+
+function createPlayer() {
+    if (player) scene.remove(player);
+
+    const group = new THREE.Group();
+
+    const animalColors = [0xffffff, 0xaaaaaa, 0xffcc99, 0x333333];
+    const color = animalColors[Math.floor(Math.random() * animalColors.length)];
+
+
+    const mat = new THREE.MeshStandardMaterial({
+        color: color,
+        flatShading: true
+    });
+
+    const eyeMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    const eyeGeo = new THREE.BoxGeometry(0.15, 0.15, 0.05);
+
+    const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
+    leftEye.position.set(-0.25, 0.6, 0.5);
+    group.add(rightEye);
+
+    const earType = Math.floor(Math.random() * 3);
+    const eatGeo = 
+    earType === 0 
+    ? new THREE.BoxGeometry(0.2, 0.5, 0.2) // Long (Bunny)
+    : earType === 1
+    ? new THREE.BoxGeometry(0.3, 0.3, 0.1) // Roundish (bear)
+    : new THREE.ConeGeometry(0.2, 0.4, 4); // pointy (cat)
+
+    const leftEar = new THREE.Mesh(eatGeo, mat);
+    leftEar.position.set(-0.3, 1.1, 0);
+    if (earType !== 2) leftEar.castShadow = true;
+    group.add(leftEar);
+    
+}
