@@ -66,10 +66,41 @@ const THEMES = [
         obstacle: 0x009688,
         decor: 0x80cb4,
     },
-    {name: "Midnight",
+    {
+        name: "Midnight",
         sky: 0x000000,
         ground: 0x000000,
-        onst
+        obstacle : 0xffff00,
+        decor: 0x444444 
     }
-] 
+] ;
+
+function init () {
+    
+    scene = new THREE.Scene();
+
+
+    camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+    );
+    camera.position.set(
+        CONFIG.cameraOffset.x,
+        CONFIG.cameraOffset.y,
+        CONFIG.cameraOffset.z
+    );
+    camera.lookAt(0, 0, -50);
+
+    renderer = new THREE.webGLRenderer({alpha:true, antialias: true });
+    renderer.setSize(window.innerHeight, window.innerHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    document.getElementById("game-container").appendChild(renderer.domElement);
+
+
+
+
+}
  
